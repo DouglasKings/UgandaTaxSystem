@@ -1,5 +1,6 @@
 // Function declaration
-double calculateSedanTaxes(int Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay, double totalFee) {
+double calculateSedanTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay,
+                           double plateSystem, double engineCapacity) {
 
     // Fixed tax amounts
     double stampDuty = 35000; 
@@ -7,28 +8,43 @@ double calculateSedanTaxes(int Age, double costInsuranceFreight, double transpor
     double exciseDuty = 200000;
     double DPS = 700000;
     double infrastructureLevyFee = 150000;
-    int currentYear = 2024;   
+    double importDuty = 0.25; 
+    double valueAddedTax = 0.18; 
+    double witholdingTax = 0.06;
+    double currentYear = 2024; 
+    double carAge = currentYear - Age;  
 
     // Declaring variables 
-    double importDuty, valueAddedTax, witholdingTax, costInsuranceFreight, parkingFeePerDay, grossWeightFee, grossWeight, 
-           engineCapacityFee, engineCapacity;
-    int Age, transportationMode, daysInBond;
+    double importDutyFee, valueAddedTaxFee, witholdingTaxFee, costInsuranceFreight, parkingFeePerDay, grossWeightFee, grossWeight, 
+           engineCapacityFee, engineCapacity, Age, transportationMode;
 
     // Calculating import duty fee based on cost of insurance freight
-    double ImportDutyFee = importDuty * costInsuranceFreight;
-    printf("%.2lf\n", ImportDutyFee);  // Print the calculated import duty fee
+    importDutyFee = importDuty * costInsuranceFreight;
+    printf("%.2lf\n", importDutyFee);  // Print the calculated import duty fee
 
     // Calculating value-added tax fee based on cost of insurance freight
-    double ValueAddedTaxFee = valueAddedTax * costInsuranceFreight; 
-    printf("%.2lf\n", ValueAddedTaxFee);  // Print the calculated VAT fee
+    valueAddedTaxFee = valueAddedTax * costInsuranceFreight; 
+    printf("%.2lf\n", valueAddedTaxFee);  // Print the calculated VAT fee
 
     // Calculating withholding tax fee based on cost of insurance freight
-    double WitholdingTaxFee = witholdingTax * costInsuranceFreight;             
-    printf("%.2lf\n", WitholdingTaxFee);  // Print the calculated withholding tax fee
+    witholdingTaxFee = witholdingTax * costInsuranceFreight;             
+    printf("%.2lf\n", witholdingTaxFee);  // Print the calculated withholding tax fee
+
+    // Calculating stamp duty fee based on cost of insurance freight
+    printf("The stamp duty is: ", stampDuty);
+
+    // Calculating form fees based on cost of insurance freight
+    printf("The form fees are: ", formFees);
+
+    // Calculating excise duty fee based on cost of insurance freight
+    printf("The excise duty is: ", exciseDuty);
+
+    // Determining plate system fee based on whether plate system equals 1 or not
+    double plateSystemFee = 700000;
+    printf("%.2lf\n", plateSystemFee);  
 
     // Calculating car age fee based on the age of the sedan
     if (Age > 1 && Age <= 5){
-        int carAge = currentYear - Age;
         double carAgeFee = 0.01 * costInsuranceFreight;
         printf("The fee for car age is %.2lf\n", carAgeFee);  
     }
@@ -46,15 +62,15 @@ double calculateSedanTaxes(int Age, double costInsuranceFreight, double transpor
 
     // Calculating gross weight fee based on the gross weight of the sedan
     if(grossWeight >= 1500 && grossWeight <= 2000){
-        double grossWeightFee = 0.10 * costInsuranceFreight;
+        grossWeightFee = 0.10 * costInsuranceFreight;
         printf("The fee  is %.2lf\n", grossWeightFee); 
     }
     else if(grossWeight > 2000){
-            double grossWeightFee = 0.15 * costInsuranceFreight;
+            grossWeightFee = 0.15 * costInsuranceFreight;
             printf("The fee  is %.2lf\n", grossWeightFee); 
     }
     else if(grossWeight < 1500){
-         double grossWeightFee = costInsuranceFreight * 0.02;
+         grossWeightFee = costInsuranceFreight * 0.02;
          printf("The fee  is %.2lf\n", grossWeightFee); 
     }else{
         printf("No gross weight fee"); 
@@ -86,7 +102,7 @@ double calculateSedanTaxes(int Age, double costInsuranceFreight, double transpor
     printf("The parking fee is %.2lf\n", parkingFee);  
 
     // Sum up all the calculated fees and taxes to get the total taxes
-    double totalTaxes = ImportDutyFee + ValueAddedTaxFee + WitholdingTaxFee + grossWeightFee + engineCapacityFee +  stampDuty + 
+    double totalTaxes = importDutyFee + valueAddedTaxFee + witholdingTaxFee + grossWeightFee + engineCapacityFee +  stampDuty + 
                         formFees + exciseDuty + DPS + infrastructureLevyFee + transportationFee + parkingFee;
 
     return totalTaxes;  // Return the total taxes

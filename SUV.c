@@ -1,32 +1,49 @@
 // Function declaration
-double calculateSUVTaxes(int Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay, double totalFee, double seatingCapacity, double grossWeight) {
-
+double calculateSUVTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay,
+                         double seatingCapacity, double grossWeight, double plateSystem) {
     // Fixed tax amounts
     double stampDuty = 35000; 
     double formFees = 20000;
     double exciseDuty = 200000;
     double APS = 300000;
     double infrastructureLevyFee = 150000;
-    int currentYear = 2024; 
+    double importDuty = 0.25; 
+    double valueAddedTax = 0.18; 
+    double witholdingTax = 0.06;
+    double currentYear = 2024; 
+    double carAge = currentYear - Age;
 
     double transportationFee = 0;
     double parkingFee = 0;   
 
     // Declaring variables 
-    double importDuty, valueAddedTax, witholdingTax, parkingFeePerDay, grossWeightFee, engineCapacityFee, engineCapacity;
-    int Age, transportationMode, daysInBond;
+    double importDutyFee, valueAddedTaxFee, witholdingTaxFee, parkingFeePerDay, grossWeightFee, engineCapacityFee, engineCapacity,
+           Age, transportationMode;
 
     // Calculating import duty fee based on cost of insurance freight
-    double ImportDutyFee = importDuty * costInsuranceFreight;
-    printf("%.2lf\n", ImportDutyFee);  // Print the calculated import duty fee
+    importDutyFee = importDuty * costInsuranceFreight;
+    printf("%.2lf\n", importDutyFee);  // Print the calculated import duty fee
 
     // Calculating value-added tax fee based on cost of insurance freight
-    double ValueAddedTaxFee = valueAddedTax * costInsuranceFreight; 
-    printf("%.2lf\n", ValueAddedTaxFee);  // Print the calculated VAT fee
+    valueAddedTaxFee = valueAddedTax * costInsuranceFreight; 
+    printf("%.2lf\n", valueAddedTaxFee);  // Print the calculated VAT fee
 
     // Calculating withholding tax fee based on cost of insurance freight
-    double WitholdingTaxFee = witholdingTax * costInsuranceFreight;             
-    printf("%.2lf\n", WitholdingTaxFee);  // Print the calculated withholding tax fee
+    witholdingTaxFee = witholdingTax * costInsuranceFreight;             
+    printf("%.2lf\n", witholdingTaxFee);  // Print the calculated withholding tax fee
+
+    // Calculating stamp duty fee based on cost of insurance freight
+    printf("The stamp duty is: ", stampDuty);
+
+    // Calculating form fees based on cost of insurance freight
+    printf("The form fees are: ", formFees);
+
+    // Calculating excise duty fee based on cost of insurance freight
+    printf("The excise duty is: ", exciseDuty);
+    
+    // Determining plate system fee based on whether plate system equals 1 or not
+    double plateSystemFee = 300000;
+    printf("%.2lf\n", plateSystemFee);
 
     // Calculating seating capacity fee based on the seating capacity 
     double seatingCapacityFee = (seatingCapacity > 5)? 350000 * seatingCapacity: 0;
@@ -34,7 +51,6 @@ double calculateSUVTaxes(int Age, double costInsuranceFreight, double transporta
 
     // Calculating car age fee based on the age 
     if (Age > 1 && Age <= 5){
-        int carAge = currentYear - Age;
         double carAgeFee = 0.01 * costInsuranceFreight;
         printf("The fee for car age is %.2lf\n", carAgeFee);  
     }
@@ -77,8 +93,8 @@ double calculateSUVTaxes(int Age, double costInsuranceFreight, double transporta
     printf("The parking fee is %.2lf\n", parkingFee);  
 
     // Sum up all the calculated fees and taxes to get the total taxes
-    double totalTaxes = ImportDutyFee + ValueAddedTaxFee + WitholdingTaxFee + grossWeightFee + engineCapacityFee +  stampDuty + 
-                        formFees + exciseDuty + APS + infrastructureLevyFee + transportationFee + parkingFee;
+    double totalTaxes = importDutyFee + valueAddedTaxFee + witholdingTaxFee + grossWeightFee + engineCapacityFee +  stampDuty + 
+                        formFees + exciseDuty + plateSystem + infrastructureLevyFee + transportationFee + parkingFee;
 
     return totalTaxes;  // Return the total taxes
 }
