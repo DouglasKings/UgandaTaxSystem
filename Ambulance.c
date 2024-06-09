@@ -1,13 +1,14 @@
 #include <stdio.h>
 
 // Function declaration
-double calculateAmbulanceTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay, double plateSystem){
+double calculateAmbulanceTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double plateSystem){
     
     // Fixed tax amounts
     double stampDuty = 35000; 
     double formFees = 20000;
     double exciseDuty = 200000;
     double infrastructureLevyFee = 150000;
+    double parkingFeePerDay = 15000;
     double currentYear = 2024;
     double carAgeFee = currentYear - Age; 
 
@@ -21,7 +22,7 @@ double calculateAmbulanceTaxes(double Age, double costInsuranceFreight, double t
     }
 
     // Calculating fees based on different conditions
-    if (Age > 10) {
+    if (Age >= 10) {
         carAgeFee = 0.15 * costInsuranceFreight; // Corrected logic here
     } else {
         carAgeFee = infrastructureLevyFee;
@@ -33,16 +34,12 @@ double calculateAmbulanceTaxes(double Age, double costInsuranceFreight, double t
     } else if (transportationMode == 2) {
         transportationFee = 0.015 * costInsuranceFreight;
     } else {
-         transportationFee = 0;        
+               
     }
 
     // Parking fee calculation depends on days in bond
-    if (daysInBond > 30) {
-        parkingFee = daysInBond * parkingFeePerDay;
-    } else {
-        parkingFee = 0;
-    }
-
+    parkingFee = daysInBond * parkingFeePerDay;
+    
     // Sum up all tax components to calculate total taxes
     totalTaxes = stampDuty + formFees + exciseDuty + plateSystem + carAgeFee + transportationFee + parkingFee;
 

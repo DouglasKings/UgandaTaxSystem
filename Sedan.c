@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-double calculateSedanTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay,
-                           double plateSystem, double engineCapacity, double grossWeight) {
+double calculateSedanTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double plateSystem,
+                           double engineCapacity, double grossWeight) {
 
     // Fixed tax amounts
     double stampDuty = 35000; 
@@ -13,6 +13,7 @@ double calculateSedanTaxes(double Age, double costInsuranceFreight, double trans
     double witholdingTax = 0.06;
     double currentYear = 2024; 
     double carAgeFee = 0; // Initialize carAgeFee
+    double parkingFeePerDay = 15000;
 
     // Declaring and initializing variables 
     double importDutyFee, valueAddedTaxFee, witholdingTaxFee, grossWeightFee, engineCapacityFee, transportationFee,
@@ -96,17 +97,11 @@ double calculateSedanTaxes(double Age, double costInsuranceFreight, double trans
     }
 
     // Parking fee calculation depends on days in bond
-    if (daysInBond > 30) {
-        parkingFee = daysInBond * parkingFeePerDay;
-        //printf("The parking fee is %.2lf\n", parkingFee);
-    } else {
-        parkingFee = 0; // Corrected to simply set parkingFee to 0
-        //printf("The parking fee is %.2lf\n", parkingFee);
-    }
-
+    parkingFee = daysInBond * parkingFeePerDay;
+        
     // Sum up all the calculated fees and taxes to get the total taxes
     totalTaxes = importDutyFee + valueAddedTaxFee + witholdingTaxFee + grossWeightFee + engineCapacityFee + 
-                 stampDuty + formFees + exciseDuty + plateSystem + carAgeFee + infrastructureLevyFee + transportationFee + parkingFee;
+                 stampDuty + formFees + exciseDuty + plateSystem + carAgeFee + transportationFee + parkingFee;
 
     return totalTaxes;  // Return the total taxes
 }

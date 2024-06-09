@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 // Function declaration
-double calculateEstateTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay,
-                            double seatingCapacity, double engineCapacity, double grossWeight, double plateSystem) {    
+double calculateEstateTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double seatingCapacity,
+                            double engineCapacity, double grossWeight, double plateSystem) {    
     // Declaring variables for storing various fees and taxes
     double importDutyFee, valueAddedTaxFee, witholdingTaxFee, grossWeightFee, engineCapacityFee, transportationFee, parkingFee,
            seatingCapacityFee, totalTaxes;
@@ -17,6 +17,7 @@ double calculateEstateTaxes(double Age, double costInsuranceFreight, double tran
     double witholdingTax = 0.06; // Withholding Tax rate
     double currentYear = 2024; // Current year for calculating car age
     double carAgeFee = currentYear - Age; // Car age calculation
+    double parkingFeePerDay = 15000;
         
     // Calculating import duty fee based on cost of insurance freight
     importDutyFee = importDuty * costInsuranceFreight;
@@ -80,17 +81,11 @@ double calculateEstateTaxes(double Age, double costInsuranceFreight, double tran
     }
 
     // Parking fee calculation depends on days in bond
-    if (daysInBond > 30) {
-        parkingFee = daysInBond * parkingFeePerDay;
-        //printf("The parking fee is %.2lf\n", parkingFee);
-    } else {
-        parkingFee = 0; 
-        //printf("The parking fee is %.2lf\n", parkingFee);
-    }
-    
+    //parkingFee = daysInBond * parkingFeePerDay;
+         
     // Sum up all the calculated fees and taxes to get the total taxes
     totalTaxes = importDutyFee + valueAddedTaxFee + witholdingTaxFee + seatingCapacityFee + grossWeightFee + engineCapacityFee +
-                 stampDuty + formFees + exciseDuty + plateSystemFee + carAgeFee + infrastructureLevyFee + transportationFee + parkingFee;
+                 stampDuty + formFees + exciseDuty + plateSystemFee + carAgeFee + transportationFee + parkingFee;
 
     return totalTaxes;  // Return the total taxes
 }

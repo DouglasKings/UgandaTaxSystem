@@ -7,30 +7,34 @@
 #include "Trailer.c"
 
 // Assuming the functions for calculating taxes are correctly implemented in the included.c files
-double calculateAmbulanceTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay, double plateSystem);
-double calculateEstateTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay, double seatingCapacity, double engineCapacity, double grossWeight, double plateSystem);
-double calculateSedanTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay, double plateSystem, double engineCapacity, double grossWeight);
-double calculateSUVTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay, double seatingCapacity, double grossWeight, double plateSystem);
-double calculateTrailerTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay, double engineCapacity, double grossWeight, double plateSystem);
+double calculateAmbulanceTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double plateSystem);
+double calculateEstateTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double seatingCapacity, double engineCapacity, double grossWeight, double plateSystem);
+double calculateSedanTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double plateSystem, double engineCapacity, double grossWeight);
+double calculateSUVTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double seatingCapacity, double grossWeight, double plateSystem);
+double calculateTrailerTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double engineCapacity, double grossWeight, double plateSystem);
 
 int main() {
     int vehicleType; 
     double Age, grossWeight, engineCapacity, seatingCapacity, costInsuranceFreight, plateSystem, totalTaxes, transportationMode,
            daysInBond; 
+     // Fixed tax amounts
     double stampDuty = 35000; 
-    double formFees = 20000;
-    double exciseDuty = 200000;
-    double infrastructureLevyFee = 150000;
-    double  parkingFeePerDay = 15000;
-    double currentYear = 2024;
-    double carAgeFee = currentYear - Age;
+    double formFees = 20000; 
+    double exciseDuty = 200000; 
+    double infrastructureLevyFee = 150000; 
+    double importDuty = 0.25; 
+    double valueAddedTax = 0.18; 
+    double witholdingTax = 0.06; 
+    double currentYear = 2024; 
+    double carAgeFee = currentYear - Age; 
+    double parkingFeePerDay = 15000;
 
-    double importDutyFee = 0.0, valueAddedTaxFee = 0.0, witholdingTaxFee = 0.0, grossWeightFee = 0.0, engineCapacityFee = 0.0, transportationFee = 0.0,
-           parkingFee = 0.0, seatingCapacityFee = 0.0;
+    double importDutyFee, valueAddedTaxFee, witholdingTaxFee, grossWeightFee, engineCapacityFee, transportationFee,
+           parkingFee, seatingCapacityFee;
             
     // Validating user input
     do {
-        printf("Enter the Vehicle Type (e.g 1 for Ambulance, 2 for Estate, 3 for Sedan, 4 for Sports Utility Vehicle(SUV) & 5 for Trailer): \n");
+        printf("Enter the Vehicle Type (e.g 1 for Ambulance, 2 for Estate, 3 for Sedan, 4 for Sports Utility Vehicle(SUV) & 5 for Trailer): ");
         scanf("%d", &vehicleType);
         printf("Vehicle type is: %d \n", vehicleType);
         if (vehicleType!= 1 && vehicleType!= 2 && vehicleType!= 3 && vehicleType!= 4 && vehicleType!= 5) {
@@ -67,9 +71,9 @@ int main() {
         } else {
             // Determining if the plate system is analog or digital
             if (plateSystem == 300000) {
-                printf("The plate system is Analog.\n");
+                printf("The plate system is Analog Plate System .\n");
             } else { 
-                printf("The plate system is Digital.\n");
+                printf("The plate system is Digital Plate System .\n");
             }
             break; 
         }
@@ -92,7 +96,7 @@ int main() {
     switch(vehicleType){
         case 1:
             printf("Ambulance\n");
-            totalTaxes = calculateAmbulanceTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, parkingFeePerDay, plateSystem);
+            totalTaxes = calculateAmbulanceTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, plateSystem);
             // Printing fixed taxes
             printf("The stamp duty fee is %.2lf\n", stampDuty);
             printf("The form fees are %.2lf\n", formFees);
@@ -105,7 +109,7 @@ int main() {
             break;
         case 2:
             printf("Estate\n");
-            totalTaxes = calculateEstateTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, parkingFeePerDay, seatingCapacity, engineCapacity, grossWeight, plateSystem);
+            totalTaxes = calculateEstateTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, seatingCapacity, engineCapacity, grossWeight, plateSystem);
             // Printing Statements
             printf("The import duty fee is %.2lf\n", importDutyFee);
             printf("The value added tax fee is %.2lf\n", valueAddedTaxFee);
@@ -124,7 +128,7 @@ int main() {
             break;
         case 3:
             printf("Sedan\n");
-            totalTaxes = calculateSedanTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, parkingFeePerDay, plateSystem, engineCapacity, grossWeight);
+            totalTaxes = calculateSedanTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, plateSystem, engineCapacity, grossWeight);
             // Printing Statements
             printf("The import duty fee is %.2lf\n", importDutyFee);
             printf("The value added tax fee is %.2lf\n", valueAddedTaxFee);
@@ -141,7 +145,7 @@ int main() {
             break;
         case 4:
             printf("Sports Utility Vehicle\n");
-            totalTaxes = calculateSUVTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, parkingFeePerDay, seatingCapacity, grossWeight, plateSystem);
+            totalTaxes = calculateSUVTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, seatingCapacity, grossWeight, plateSystem);
             // Printing Statements
             printf("The import duty fee is %.2lf\n", importDutyFee);
             printf("The value added tax fee is %.2lf\n", valueAddedTaxFee);
@@ -159,7 +163,7 @@ int main() {
             break;
         case 5:
             printf("Trailer\n");
-            totalTaxes = calculateTrailerTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, parkingFeePerDay, engineCapacity, grossWeight, plateSystem);
+            totalTaxes = calculateTrailerTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, engineCapacity, grossWeight, plateSystem);
             // Printing Statements
             printf("The import duty fee is %.2lf\n", importDutyFee);
             printf("The value added tax fee is %.2lf\n", valueAddedTaxFee);

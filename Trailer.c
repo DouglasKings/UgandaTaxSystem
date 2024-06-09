@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 // Function declaration
-double calculateTrailerTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double parkingFeePerDay,
-                             double engineCapacity, double grossWeight, double plateSystem) {    
+double calculateTrailerTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double engineCapacity,
+                             double grossWeight, double plateSystem) {    
     // Declaring variables 
     double importDutyFee, valueAddedTaxFee, witholdingTaxFee, grossWeightFee, engineCapacityFee, transportationFee, parkingFee; 
     
@@ -16,6 +16,7 @@ double calculateTrailerTaxes(double Age, double costInsuranceFreight, double tra
     double witholdingTax = 0.06;
     double currentYear = 2024;
     double carAgeFee = currentYear - Age;
+    double parkingFeePerDay = 15000;
 
     // Calculating import duty fee based on cost of insurance freight
     importDutyFee = importDuty * costInsuranceFreight;
@@ -85,14 +86,8 @@ double calculateTrailerTaxes(double Age, double costInsuranceFreight, double tra
     }
 
     // Parking fee calculation depends on days in bond
-    if (daysInBond > 30) {
-        parkingFee = daysInBond * parkingFeePerDay;
-        //printf("The parking fee is %.2lf\n", parkingFee);
-    } else {
-        parkingFee = 0; // Corrected to simply set parkingFee to 0
-        //printf("The parking fee is %.2lf\n", parkingFee);
-    } 
-
+    parkingFee = daysInBond * parkingFeePerDay;
+    
     // Sum up all the calculated fees and taxes to get the total taxes
     double totalTaxes = importDutyFee + valueAddedTaxFee + witholdingTaxFee + grossWeightFee + engineCapacityFee +  stampDuty +
                         formFees + exciseDuty + carAgeFee + transportationFee + parkingFee;
