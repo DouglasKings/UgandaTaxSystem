@@ -30,14 +30,11 @@ int main() {
     double currentYear = 2024; 
     double carAgeFee = currentYear - Age; 
     double parkingFeePerDay = 15000;
-    char choice;
 
     double importDutyFee, valueAddedTaxFee, witholdingTaxFee, grossWeightFee, engineCapacityFee, transportationFee,
            parkingFee, seatingCapacityFee;
             
     // Validating user input
-do{
-
     do {
         printf("Enter the Vehicle Type (e.g 1 for Ambulance, 2 for Estate, 3 for Sedan, 4 for Sports Utility Vehicle(SUV), 5 for Trailer & 6 for Other Vehicles): ");
         scanf("%d", &vehicleType);
@@ -66,7 +63,7 @@ do{
             scanf("%lf", &Age);
             printf("Age is: %.2lf\n", Age);
         } else{
-
+            
         }      
 
     } while (vehicleType <= 0 || vehicleType > 6);
@@ -102,13 +99,6 @@ do{
     scanf("%lf", &daysInBond);
     printf("Days in bond is %.2lf \n", daysInBond);
 
- // Ask the user if they want to try again
-    printf("\nDo you want to choose another car? (Y/N): ");
-    scanf(" %c", &choice); // Note the space before %c to skip any whitespace characters
-    getchar(); // To consume the newline character left by scanf
-    
-}while(choice == 'n' || choice == 'N');
-
     switch(vehicleType){
         case 1:             
             totalTaxes = calculateAmbulanceTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, plateSystem);             
@@ -136,9 +126,17 @@ do{
         
         default:
             printf("Invalid input. Please choose the Vehicle Type (e.g 1 for Ambulance, 2 for Estate, 3 for Sedan, 4 for Sports Utility Vehicle(SUV), 5 for Trailer & 6 for Other Vehicles) ");
-            break;
         
+        // Ask the user if they want to try again
+        char choice;
+        printf("\nDo you want to choose another car? (y/n): ");
+        scanf(" %c", &choice); // Note the space before %c to skip any whitespace characters
+        getchar(); // To consume the newline character left by scanf
+        
+        if(choice == 'n' || choice == 'N') {
+            break; // Exit the loop if the user does not wish to try again
+        }
     }
-       
+        
     return 0;
 }

@@ -1,8 +1,7 @@
 #include <stdio.h>
 
 // Function declaration
-double calculateEstateTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double seatingCapacity,
-                            double engineCapacity, double grossWeight, double plateSystem) {    
+double calculateOtherVehicleTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double plateSystem) {    
     // Declaring variables for storing various fees and taxes
     double importDutyFee, valueAddedTaxFee, witholdingTaxFee, grossWeightFee, engineCapacityFee, transportationFee, parkingFee,
            seatingCapacityFee, totalTaxes;
@@ -31,7 +30,7 @@ double calculateEstateTaxes(double Age, double costInsuranceFreight, double tran
     // Determining plate system fee based on whether plate system equals 1 or not
     double plateSystemFee = (plateSystem == 300000)? 300000 : 700000;
        
-    // Calculating car age fee based on the age 
+   /*// Calculating car age fee based on the age 
     if (Age > 1 && Age <= 5){
         carAgeFee = 0.01 * costInsuranceFreight;
     }
@@ -43,9 +42,9 @@ double calculateEstateTaxes(double Age, double costInsuranceFreight, double tran
     }
     else {
         carAgeFee = infrastructureLevyFee; 
-    }
+    }*/ 
 
-    // Calculating seating capacity fee based on the seating capacity
+    /*// Calculating seating capacity fee based on the seating capacity
     seatingCapacityFee = (seatingCapacity > 5)? 250000 * seatingCapacity: 0;  
         
     // Calculating gross weight fee based on the gross weight
@@ -58,10 +57,11 @@ double calculateEstateTaxes(double Age, double costInsuranceFreight, double tran
     else{
          grossWeightFee = 0.02 * grossWeight;
     }
-    
+
     // Calculating engine capacity fee based on the engine capacity
     engineCapacityFee = (engineCapacity > 1800)? costInsuranceFreight * 0.05: costInsuranceFreight * 0.025;
-        
+    */  
+    
     // Transportation fee calculation varies based on mode
     if (transportationMode == 1) {
         transportationFee = 0.005 * costInsuranceFreight;
@@ -89,10 +89,10 @@ double calculateEstateTaxes(double Age, double costInsuranceFreight, double tran
      printf("The form fees are %.2lf\n", formFees);
      printf("The excise duty fee is %.2lf\n", exciseDuty);
      printf("The plate system fee is %.2lf\n", plateSystem);
-     printf("The infrastructure levy fee is %.2lf\n", carAgeFee);
+     /*printf("The infrastructure levy fee is %.2lf\n", carAgeFee);
      printf("The seating capacity fee is %.2lf\n", seatingCapacityFee);  
      printf("The gross weight fee is %.2lf\n", grossWeightFee);
-     printf("The engine capacity fee is %.2lf\n", engineCapacityFee); 
+     printf("The engine capacity fee is %.2lf\n", engineCapacityFee); */
      printf("The transportation fee is %.2lf\n", transportationFee);
      printf("The parking fee is %.2lf\n", parkingFee);
      printf("Total Taxes: %.2lf\n", totalTaxes);
