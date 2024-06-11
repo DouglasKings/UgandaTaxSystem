@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 // Function declaration
 double calculateOtherVehicleTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double plateSystem) {    
     // Declaring variables for storing various fees and taxes

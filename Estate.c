@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 // Function declaration
 double calculateEstateTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double seatingCapacity,
                             double engineCapacity, double grossWeight, double plateSystem) {    

@@ -1,5 +1,4 @@
-#include <stdio.h>
-
+// Function implementation
 double calculateSedanTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double plateSystem,
                            double engineCapacity, double grossWeight) {
 

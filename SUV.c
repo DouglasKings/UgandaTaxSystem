@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 // Function declaration
 double calculateSUVTaxes(double Age, double costInsuranceFreight, double transportationMode, double daysInBond, double seatingCapacity,
                          double grossWeight, double plateSystem) {

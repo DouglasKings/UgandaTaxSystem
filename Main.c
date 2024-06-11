@@ -3,7 +3,7 @@
 #include "Ambulance.c"
 #include "Estate.c"
 #include "Sedan.c"
-#include "SUV.C"
+#include "SUV.c"
 #include "Trailer.c"
 #include "OtherVehicle.c"
 
@@ -36,7 +36,6 @@ int main() {
            parkingFee, seatingCapacityFee;
             
     // Validating user input
-do{
 
     do {
         printf("Enter the Vehicle Type (e.g 1 for Ambulance, 2 for Estate, 3 for Sedan, 4 for Sports Utility Vehicle(SUV), 5 for Trailer & 6 for Other Vehicles): ");
@@ -102,13 +101,6 @@ do{
     scanf("%lf", &daysInBond);
     printf("Days in bond is %.2lf \n", daysInBond);
 
- // Ask the user if they want to try again
-    printf("\nDo you want to choose another car? (Y/N): ");
-    scanf(" %c", &choice); // Note the space before %c to skip any whitespace characters
-    getchar(); // To consume the newline character left by scanf
-    
-}while(choice == 'n' || choice == 'N');
-
     switch(vehicleType){
         case 1:             
             totalTaxes = calculateAmbulanceTaxes(Age, costInsuranceFreight, transportationMode, daysInBond, plateSystem);             
@@ -139,6 +131,12 @@ do{
             break;
         
     }
+
+    // Ask the user if they want to try again
+    printf("\nDo you want to choose another car? (Y/N): ");
+    scanf(" %c", &choice); // Note the space before %c to skip any whitespace characters
+    getchar(); // To consume the newline character left by scanf
+    (choice == 'n' || choice == 'N');
        
     return 0;
 }
