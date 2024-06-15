@@ -44,17 +44,17 @@ int main() {
             if (vehicleType == 2 || vehicleType == 3 || vehicleType == 5) {
                 printf("Enter engine capacity (Measured in CC): ");
                 scanf("%lf", &engineCapacity); 
-                printf("Engine capacity is: %.2lf \n", engineCapacity);
+                printf("Engine capacity is: %,.2lf \n", engineCapacity);
             } 
             else if (vehicleType == 2 || vehicleType == 4) { 
                 printf("Enter seating capacity: ");
                 scanf("%lf", &seatingCapacity); 
-                printf("Seating capacity is: %.2lf \n", seatingCapacity);
+                printf("Seating capacity is: %,.2lf \n", seatingCapacity);
             }
             else if (vehicleType == 2 || vehicleType == 3 || vehicleType == 4 || vehicleType == 5) { 
                 printf("Enter gross weight (Measured in tons): ");
                 scanf("%lf", &grossWeight); 
-                printf("Gross weight is: %.2lf \n", grossWeight);
+                printf("Gross weight is: %,.2lf \n", grossWeight);
             }
             else{
 
@@ -64,7 +64,7 @@ int main() {
             if(vehicleType!= 6){
                 printf("Enter the Cost Insurance Freight: ");
                 scanf("%lf", &costInsuranceFreight);
-                printf("Cost Insurance Freight: %.2lf\n", costInsuranceFreight);
+                printf("Cost Insurance Freight: %,.2lf\n", costInsuranceFreight);
 
                 printf("Enter the vehicle age in years derived from the year of manufacturer: ");
                 scanf("%lf", &Age);
@@ -103,7 +103,7 @@ int main() {
         // Days in bond input
         printf("Enter number of days the vehicle spends in the bond: ");
         scanf("%lf", &daysInBond);
-        printf("Days in bond is %.2lf \n", daysInBond);
+        printf("Days in bond is %,.2lf \n", daysInBond);
 
         // Calculate total taxes based on vehicle type
         switch(vehicleType) {

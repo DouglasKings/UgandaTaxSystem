@@ -87,18 +87,18 @@ double calculateTrailerTaxes(double Age, double costInsuranceFreight, double tra
                         formFees + exciseDuty + carAgeFee + transportationFee + parkingFee;
     
     printf("\nTrailer\n");
-    printf("The import duty fee is %.2lf\n", importDutyFee);
-    printf("The value added tax fee is %.2lf\n", valueAddedTaxFee);
-    printf("The withholding tax fee is %.2lf\n", witholdingTaxFee);
-    printf("The stamp duty fee is %.2lf\n", stampDuty);
-    printf("The form fees are %.2lf\n", formFees);
-    printf("The excise duty fee is %.2lf\n", exciseDuty);
-    printf("The plate system fee is %.2lf\n", plateSystem);
-    printf("The infrastructure levy fee is %.2lf\n", carAgeFee);
-    printf("The gross weight fee is %.2lf\n", grossWeightFee);
-    printf("The transportation fee is %.2lf\n", transportationFee);
-    printf("The parking fee is %.2lf\n", parkingFee);
-    printf("Total Taxes: %.2lf\n", totalTaxes);
+    printf("The import duty fee is %,.2lf\n", importDutyFee);
+    printf("The value added tax fee is %,.2lf\n", valueAddedTaxFee);
+    printf("The withholding tax fee is %,.2lf\n", witholdingTaxFee);
+    printf("The stamp duty fee is %,.2lf\n", stampDuty);
+    printf("The form fees are %,.2lf\n", formFees);
+    printf("The excise duty fee is %,.2lf\n", exciseDuty);
+    printf("The plate system fee is %,.2lf\n", plateSystem);
+    printf("The infrastructure levy fee is %,.2lf\n", carAgeFee);
+    printf("The gross weight fee is %,.2lf\n", grossWeightFee);
+    printf("The transportation fee is %,.2lf\n", transportationFee);
+    printf("The parking fee is %,.2lf\n", parkingFee);
+    printf("Total Taxes: %,.2lf\n", totalTaxes);
 
     return totalTaxes;  // Return the total taxes
 }
