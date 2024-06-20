@@ -103,7 +103,7 @@ int main() {
         // Days in bond input
         printf("Enter number of days the vehicle spends in the bond: ");
         scanf("%lf", &daysInBond);
-        printf("Days in bond is %,.2lf \n", daysInBond);
+        printf("Days in bond is %.2lf \n", daysInBond);
 
         // Calculate total taxes based on vehicle type
         switch(vehicleType) {
